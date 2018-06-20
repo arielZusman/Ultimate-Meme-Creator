@@ -11,9 +11,14 @@
 </head>
 
 <body onload="init()">
-  <h1>Ultimate Meme Creator</h1>
+  <h1 class="">Ultimate Meme Creator</h1>
+
+  <input list="images" onchange="onFilterChange()">
+  <datalist id="images">
+    <!-- datalist options goes here  -->
+  </datalist>
   <div class="image-container container">
-    <!-- images go here -->
+    <!-- images goes here -->
   </div>
   <script src="js/img-service.js"></script>
   <script src="js/main.js"></script>
