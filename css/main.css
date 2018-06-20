@@ -6,3 +6,20 @@ body {
   margin: 0;
   padding: 0;
 }
+.container {
+  max-width: 1020px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.image-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.image {
+  max-width: 180px;
+  padding: 10px;
+}
