@@ -10,24 +10,34 @@ function render() {
   console.log(images);
 
   let imagesStrs = images.map(image => {
-    let { id, url, keyword } = image;
-    return `<img class="image" src="${url}" data-id="${id}" alt="${keyword.join(
-      ' '
-    )}"/>`;
+    let { id, url, keywords } = image;
+    return `<div class="image"
+             style="background-image:url('${url}')"
+             data-id="${id}" 
+             alt="${keywords.join(' ')}"></div>`;
   });
 
   document.querySelector('.image-container').innerHTML = imagesStrs.join('');
 }
+
 function renderSearch() {
-  let images = imgService.getImagesForDisplay();
+  let values = imgService.getKeywords();
 
-  let optionsStrs = images.map(image => {
-    let { id, url } = image;
-    let value = url.replace('imgs/', '');
-    value = value.replace('.jpg', '');
-
+  let optionsStrs = values.map(value => {
     return `<option value="${value}">${value}</option>`;
   });
 
   document.querySelector('#images').innerHTML = optionsStrs.join('');
+}
+
+function onFilterChange(elList) {
+  let filter = elList.value;
+  let ids = imgService.getIdsByFilter(filter);
+
+  let elImages = document.querySelectorAll('.image');
+
+  elImages.forEach(elImage => {
+    if (ids.includes(+elImage.dataset.id)) elImage.classList.remove('hidden');
+    else elImage.classList.add('hidden');
+  });
 }

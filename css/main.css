@@ -20,6 +20,13 @@ body {
 }
 
 .image {
-  max-width: 180px;
-  padding: 10px;
+  width: 180px;
+  height: 180px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+}
+
+.hidden {
+  display: none;
 }
