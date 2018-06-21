@@ -94,3 +94,8 @@ function onTextChange(value) {
   ctx.font = '50px arial';
   ctx.fillText(value, 50, 50);
 }
+
+function onBackToGallery() {
+  document.querySelector('#editor').classList.add('hidden');
+  document.querySelector('#gallery').classList.remove('hidden');
+}
