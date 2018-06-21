@@ -23,6 +23,7 @@ body {
 }
 
 /* /helpers */
+
 /* Header */
 .header-container {
   position: relative;
@@ -107,6 +108,9 @@ body {
 }
 /* /Header */
 
+main {
+  padding-top: 24px;
+}
 /* image filter */
 .image-filter {
   padding: 8px;
@@ -137,4 +141,17 @@ body {
 
 .hidden {
   display: none;
+}
+
+/* editor */
+.control {
+  padding: 8px;
+  text-align: center;
+}
+
+.control__input {
+  padding: 4px 8px;
+  display: block;
+  width: 100%;
+  border: 1px solid #292929;
 }

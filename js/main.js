@@ -65,6 +65,8 @@ function onImageClick(elImage) {
 
 function onImageLoad(image) {
   return function() {
+    document.querySelector('#gallery').classList.add('hidden');
+
     let elCanvas = document.querySelector('#meme');
     let ctx = elCanvas.getContext('2d');
 
@@ -82,4 +84,13 @@ function onImageLoad(image) {
     ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
     ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
   };
+}
+
+function onTextChange(value) {
+  let elCanvas = document.querySelector('#meme');
+  let ctx = elCanvas.getContext('2d');
+
+  ctx.fillStyle = 'red';
+  ctx.font = '50px arial';
+  ctx.fillText(value, 50, 50);
 }
