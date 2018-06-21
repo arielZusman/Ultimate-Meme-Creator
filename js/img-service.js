@@ -66,9 +66,17 @@ const imgService = (function() {
       return acc;
     }, []);
   }
+
+  function getImageById(id) {
+    return images_.find(image => {
+      return image.id === id;
+    });
+  }
+
   return {
     getImagesForDisplay: getImagesForDisplay,
     getKeywords: getKeywords,
-    getIdsByFilter: getIdsByFilter
+    getIdsByFilter: getIdsByFilter,
+    getImageById: getImageById
   };
 })();

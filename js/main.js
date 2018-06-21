@@ -14,7 +14,9 @@ function render() {
     return `<div class="image"
              style="background-image:url('${url}')"
              data-id="${id}" 
-             alt="${keywords.join(' ')}"></div>`;
+             alt="${keywords.join(' ')}"
+             onclick="onImageClick(this)"
+             ></div>`;
   });
 
   document.querySelector('.image-container').innerHTML = imagesStrs.join('');
@@ -48,4 +50,10 @@ function onToggleMobileMenu(elNavToggle) {
 
 function onMenuClick() {
   document.querySelector('.header__nav').classList.remove('header__nav--open');
+}
+
+function onImageClick(elImage) {
+  let id = +elImage.dataset.id;
+  let image = imgService.getImageById(id);
+  console.log(image);
 }
