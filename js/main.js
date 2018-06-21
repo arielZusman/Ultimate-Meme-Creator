@@ -65,11 +65,21 @@ function onImageClick(elImage) {
 
 function onImageLoad(image) {
   return function() {
-    let elMeme = document.querySelector('#meme');
-    let ctx = elMeme.getContext('2d');
+    let elCanvas = document.querySelector('#meme');
+    let ctx = elCanvas.getContext('2d');
 
-    ctx.width = image.width;
-    ctx.height = image.height;
-    ctx.drawImage(image, 0, 0);
+    let elEditor = document.querySelector('#editor');
+    elCanvas.width = elEditor.offsetWidth;
+
+    const max_width = elCanvas.width;
+
+    if (image.width > max_width) {
+      image.height = (image.height * max_width) / image.width;
+      image.width = max_width;
+    }
+    elCanvas.height = image.height;
+
+    ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
+    ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
   };
 }

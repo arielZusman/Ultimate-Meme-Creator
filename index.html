@@ -39,27 +39,29 @@
       </nav>
     </div>
   </header>
-  <section id="gallery">
-    <div class="image-filter">
-      <input class="image-filter__input" list="images" placeholder="filter images" onchange="onFilterChange(this, event)">
-      <datalist id="images">
-        <!-- datalist options goes here  -->
-      </datalist>
-    </div>
+  <main class="container">
+    <section id="gallery">
+      <div class="image-filter">
+        <input class="image-filter__input" list="images" placeholder="filter images" onchange="onFilterChange(this, event)">
+        <datalist id="images">
+          <!-- datalist options goes here  -->
+        </datalist>
+      </div>
 
-    <div class="image-container container">
-      <!-- images goes here -->
-    </div>
-  </section>
-  <section id="editor">
-    <canvas id="meme"></canvas>
-  </section>
-  <section id="about">
-    <h2>About</h2>
-  </section>
-  <section id="contact">
-    <h2>Contact Us</h2>
-  </section>
+      <div class="image-container">
+        <!-- images goes here -->
+      </div>
+    </section>
+    <section id="editor">
+      <canvas id="meme"></canvas>
+    </section>
+    <section id="about">
+      <h2>About</h2>
+    </section>
+    <section id="contact">
+      <h2>Contact Us</h2>
+    </section>
+  </main>
   <script src="js/img-service.js"></script>
   <script src="js/main.js"></script>
 </body>
