@@ -54,6 +54,22 @@ function onMenuClick() {
 
 function onImageClick(elImage) {
   let id = +elImage.dataset.id;
-  let image = imgService.getImageById(id);
-  console.log(image);
+  let imageData = imgService.getImageById(id);
+  let src = imageData.url;
+
+  let image = new Image();
+  image.onload = onImageLoad(image);
+  image.src = src;
+  // console.dir(image);
+}
+
+function onImageLoad(image) {
+  return function() {
+    let elMeme = document.querySelector('#meme');
+    let ctx = elMeme.getContext('2d');
+
+    ctx.width = image.width;
+    ctx.height = image.height;
+    ctx.drawImage(image, 0, 0);
+  };
 }
