@@ -57,13 +57,19 @@ function onImageClick(elImage) {
   let imageData = imgService.getImageById(id);
   let src = imageData.url;
 
-  canvasService.loadImage(src, id);
+  canvasService.init(src, id);
 }
 
 function onTextChange(value) {
-  canvasService.changeText(value);
+  canvasService.renderText(value, 0);
 }
 
+function onIncreaseText() {
+  canvasService.textSize(0, 5);
+}
+function onDecreaseText() {
+  canvasService.textSize(0, -5);
+}
 function onBackToGallery() {
   document.querySelector('#editor').classList.add('hidden');
   document.querySelector('#gallery').classList.remove('hidden');
