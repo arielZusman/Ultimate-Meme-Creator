@@ -60,6 +60,10 @@
 
       <div class="control">
         <input class="control__input" type="text" onclick="onTextChange(this.value)" onkeyup="onTextChange(this.value)">
+        <div class="btns-container">
+          <button class="control__btn" onclick="onIncreaseText()">+</button>
+          <button class="control__btn" onclick="onDecreaseText()">-</button>
+        </div>
 
       </div>
 
@@ -71,6 +75,7 @@
       <h2>Contact Us</h2>
     </section>
   </main>
+  <script src="js/canvas-service.js"></script>
   <script src="js/img-service.js"></script>
   <script src="js/main.js"></script>
 </body>

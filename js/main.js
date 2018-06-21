@@ -57,42 +57,11 @@ function onImageClick(elImage) {
   let imageData = imgService.getImageById(id);
   let src = imageData.url;
 
-  let image = new Image();
-  image.onload = onImageLoad(image);
-  image.src = src;
-  // console.dir(image);
-}
-
-function onImageLoad(image) {
-  return function() {
-    document.querySelector('#gallery').classList.add('hidden');
-
-    let elCanvas = document.querySelector('#meme');
-    let ctx = elCanvas.getContext('2d');
-
-    let elEditor = document.querySelector('#editor');
-    elCanvas.width = elEditor.offsetWidth;
-
-    const max_width = elCanvas.width;
-
-    if (image.width > max_width) {
-      image.height = (image.height * max_width) / image.width;
-      image.width = max_width;
-    }
-    elCanvas.height = image.height;
-
-    ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
-    ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
-  };
+  canvasService.loadImage(src, id);
 }
 
 function onTextChange(value) {
-  let elCanvas = document.querySelector('#meme');
-  let ctx = elCanvas.getContext('2d');
-
-  ctx.fillStyle = 'red';
-  ctx.font = '50px arial';
-  ctx.fillText(value, 50, 50);
+  canvasService.changeText(value);
 }
 
 function onBackToGallery() {
