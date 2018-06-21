@@ -41,3 +41,11 @@ function onFilterChange(elList) {
     else elImage.classList.add('hidden');
   });
 }
+
+function onToggleMobileMenu(elNavToggle) {
+  document.querySelector('.header__nav').classList.toggle('header__nav--open');
+}
+
+function onMenuClick() {
+  document.querySelector('.header__nav').classList.remove('header__nav--open');
+}

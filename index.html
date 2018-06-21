@@ -11,15 +11,52 @@
 </head>
 
 <body onload="init()">
-  <h1 class="">Ultimate Meme Creator</h1>
+  <header class="header-container">
+    <div class="header container">
+      <a href="index.html">
+        <h1 class="header__title">
+          <span class="header__logo"></span>
+          <span class="header__text">Ultimate Meme Creator</span>
+        </h1>
+      </a>
+      <div class="header__mobile-nav" onclick="onToggleMobileMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav class="header__nav">
+        <ul class="nav list">
+          <li class="nav__item">
+            <a href="index.html">gallery</a>
+          </li>
+          <li class="nav__item">
+            <a href="#about" onclick="onMenuClick()">about</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" onclick="onMenuClick()">get in touch</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section id="gallery">
+    <div class="image-filter">
+      <input class="image-filter__input" list="images" placeholder="filter images" onchange="onFilterChange(this, event)">
+      <datalist id="images">
+        <!-- datalist options goes here  -->
+      </datalist>
+    </div>
 
-  <input list="images" onchange="onFilterChange(this, event)">
-  <datalist id="images">
-    <!-- datalist options goes here  -->
-  </datalist>
-  <div class="image-container container">
-    <!-- images goes here -->
-  </div>
+    <div class="image-container container">
+      <!-- images goes here -->
+    </div>
+  </section>
+  <section id="about">
+    <h2>About</h2>
+  </section>
+  <section id="contact">
+    <h2>Contact Us</h2>
+  </section>
   <script src="js/img-service.js"></script>
   <script src="js/main.js"></script>
 </body>

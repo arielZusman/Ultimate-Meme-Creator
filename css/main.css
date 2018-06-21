@@ -8,11 +8,116 @@ body {
 }
 .container {
   max-width: 1020px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 20px;
   padding-right: 20px;
+  padding-left: 20px;
 }
+/* helpers */
+.list {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+/* /helpers */
+/* Header */
+.header-container {
+  position: relative;
+
+  height: 62px;
+
+  background-color: #323232;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: inline-block;
+
+  width: 75px;
+  height: 50px;
+
+  background-image: url('../imgs/5.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.header__text {
+  display: none;
+}
+.header__title {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  margin: 0;
+
+  color: #2eb398;
+}
+.header__mobile-nav {
+  cursor: pointer;
+  padding: 8px;
+}
+.header__mobile-nav span {
+  width: 20px;
+  display: block;
+  height: 2px;
+  background-color: #fff;
+}
+.header__mobile-nav span:not(:last-child) {
+  margin-bottom: 4px;
+}
+.header__nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  transform: translateX(150px);
+  width: 150px;
+  padding: 8px;
+
+  background-color: #323232;
+  transition: all 500ms;
+}
+.header__nav--open {
+  transform: translateX(0);
+}
+.nav {
+}
+.nav__item:not(:last-child) {
+  border-bottom: 1px solid #2eb398;
+}
+.nav__item a {
+  display: block;
+
+  padding: 8px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  color: #fff;
+}
+/* /Header */
+
+/* image filter */
+.image-filter {
+  padding: 8px;
+  text-align: center;
+}
+.image-filter__input {
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid #2eb398;
+}
+/* /image filter */
 .image-container {
   display: flex;
   align-items: center;
@@ -20,11 +125,12 @@ body {
 }
 
 .image {
-  width: 180px;
-  height: 180px;
+  width: 120px;
+  height: 120px;
+  margin: 10px;
+
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 10px;
 }
 
 .hidden {
