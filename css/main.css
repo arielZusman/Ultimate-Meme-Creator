@@ -153,6 +153,9 @@ main {
 }
 
 /* editor */
+.meme {
+  max-width: 100%;
+}
 .back-to {
   display: flex;
   justify-content: space-between;

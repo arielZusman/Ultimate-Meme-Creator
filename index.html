@@ -56,7 +56,7 @@
       <button class="back-to" onclick="onBackToGallery()">
         back to gallery
       </button>
-      <canvas id="meme" onclick="onCanvasClick(this, event)"></canvas>
+      <canvas id="meme" class="meme" onclick="onCanvasClick(event)"></canvas>
 
       <div class="control">
         <input class="control__input" type="text" onkeyup="onTextChange(this.value)">
@@ -70,7 +70,7 @@
           <button class="control__btn" onclick="onTextPropChange({align: 'left'})">L</button>
           <button class="control__btn" onclick="onAddNewLine()">New Line</button>
         </div>
-
+        <a class="control__download" onclick="onDownloadCanvas(this)">Download</a>
       </div>
 
     </section>

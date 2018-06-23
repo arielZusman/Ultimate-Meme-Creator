@@ -36,17 +36,26 @@ let canvasService = (function() {
    * and the text
    */
   function editLine(mouseX, mouseY) {
+    let actualX = (elCanvas.width * mouseX) / elCanvas.clientWidth;
+    let actualY = (elCanvas.height * mouseY) / elCanvas.clientHeight;
+
     let idx = meme.txts.findIndex(txt => {
       let boxPositionY = txt.y - txt.size + 5;
       return (
-        mouseX > 10 &&
-        mouseX < elCanvas.width - 20 &&
-        mouseY > boxPositionY &&
-        mouseY < txt.y + 5
+        actualX > 10 &&
+        actualX < elCanvas.width - 20 &&
+        actualY > boxPositionY &&
+        actualY < txt.y + 5
       );
     });
     return idx > -1 ? { idx: idx, line: meme.txts[idx].line } : null;
   }
+
+  function download() {
+    console.dir(imageObj);
+    return elCanvas.toDataURL('image/jpeg');
+  }
+
   function createTextObj(x, y) {
     let txt = {
       x: x,
@@ -146,11 +155,12 @@ let canvasService = (function() {
 
       const max_width = elCanvas.width;
 
-      if (image.width > max_width) {
-        image.height = (image.height * max_width) / image.width;
-        image.width = max_width;
-      }
+      // if (image.width > max_width) {
+      //   image.height = (image.height * max_width) / image.width;
+      //   image.width = max_width;
+      // }
       elCanvas.height = image.height;
+      elCanvas.width = image.width;
 
       clearCanvas();
       ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
@@ -169,6 +179,7 @@ let canvasService = (function() {
     textSize: textSize,
     changeTextProp: changeTextProp,
     addNewLine: addNewLine,
-    editLine: editLine
+    editLine: editLine,
+    download: download
   };
 })();

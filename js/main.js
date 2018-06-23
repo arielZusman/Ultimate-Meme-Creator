@@ -84,10 +84,19 @@ function onAddNewLine() {
   document.querySelector('.control__input').value = '';
 }
 
-function onCanvasClick(elCanvas, ev) {
+function onCanvasClick(ev) {
+  console.log(ev.layerX, ev.layerY);
+
   let lineObj = canvasService.editLine(ev.layerX, ev.layerY);
   if (lineObj) {
     gCurrentLineIdx = lineObj.idx;
     document.querySelector('.control__input').value = lineObj.line;
   }
+}
+
+function onDownloadCanvas(elLink) {
+  canvasService.download();
+  // let imgContent = canvasService.download();
+  // elLink.href = imgContent;
+  // elLink.download = 'meme.jpg';
 }
