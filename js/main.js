@@ -1,4 +1,5 @@
 'use strict';
+let gCurrentLineIdx = 0;
 
 function init() {
   renderSearch();
@@ -61,19 +62,24 @@ function onImageClick(elImage) {
 }
 
 function onTextChange(value) {
-  canvasService.renderText(value, 0);
+  canvasService.renderText(value, gCurrentLineIdx);
 }
 
 function onTextPropChange(prop) {
-  canvasService.changeTextProp(0, prop);
+  canvasService.changeTextProp(gCurrentLineIdx, prop);
 }
 function onIncreaseText() {
-  canvasService.textSize(0, 5);
+  canvasService.textSize(gCurrentLineIdx, 5);
 }
 function onDecreaseText() {
-  canvasService.textSize(0, -5);
+  canvasService.textSize(gCurrentLineIdx, -5);
 }
 function onBackToGallery() {
   document.querySelector('#editor').classList.add('hidden');
   document.querySelector('#gallery').classList.remove('hidden');
+}
+
+function onAddNewLine(elBtn) {
+  gCurrentLineIdx = canvasService.addNewLine();
+  document.querySelector('.control__input').value = '';
 }

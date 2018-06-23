@@ -59,7 +59,7 @@
       <canvas id="meme"></canvas>
 
       <div class="control">
-        <input class="control__input" type="text" onclick="onTextChange(this.value)" onkeyup="onTextChange(this.value)">
+        <input class="control__input" type="text" onkeyup="onTextChange(this.value)">
         <div class="btns-container">
           <button class="control__btn" onclick="onTextPropChange({inc: 5})">+</button>
           <button class="control__btn" onclick="onTextPropChange({inc: -5})">-</button>
@@ -68,6 +68,7 @@
           <button class="control__btn" onclick="onTextPropChange({align: 'right'})">R</button>
           <button class="control__btn" onclick="onTextPropChange({align: 'center'})">C</button>
           <button class="control__btn" onclick="onTextPropChange({align: 'left'})">L</button>
+          <button class="control__btn" onclick="onAddNewLine(this)">New Line</button>
         </div>
 
       </div>
