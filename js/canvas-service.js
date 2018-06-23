@@ -25,7 +25,7 @@ let canvasService = (function() {
     let idx = meme.txts.length;
     let y = yTextPositions[idx];
     createTextObj(x, y);
-
+    drawTextBox(meme.txts.length - 1);
     // the idx of the last text
     return meme.txts.length - 1;
   }
@@ -53,14 +53,14 @@ let canvasService = (function() {
     // set current line text
     meme.txts[idx].line = value;
 
+    drawTextBox(idx);
+
+    // ctx.stroke();
     // render lines
     for (const txt of meme.txts) {
-      // let txt = meme.txts[idx];
-
       // set text styles
       ctx.fillStyle = txt.fill;
-      // ctx.strokeStyle = txt.stroke;
-      ctx.font = `${txt.size}px ${txt.font}`;
+      ctx.font = `${txt.size}px/1 ${txt.font}`;
       ctx.textAlign = txt.align;
 
       // let maxWidth = elCanvas.width - 30;
@@ -75,6 +75,16 @@ let canvasService = (function() {
     }
   }
 
+  function drawTextBox(idx) {
+    let boxPositionY = meme.txts[idx].y - meme.txts[idx].size + 5;
+    ctx.strokeStyle = 'rgba(0,0,0,0.7)';
+    ctx.strokeRect(
+      10,
+      boxPositionY,
+      elCanvas.width - 20,
+      meme.txts[idx].size + 5
+    );
+  }
   function changeTextProp(idx, prop) {
     let txt = meme.txts[idx];
 
@@ -127,7 +137,7 @@ let canvasService = (function() {
       clearCanvas();
       ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
 
-      yTextPositions = [30, elCanvas.height - 30, elCanvas.height / 2];
+      yTextPositions = [50, elCanvas.height - 10, elCanvas.height / 2];
       addNewLine();
     };
   }
