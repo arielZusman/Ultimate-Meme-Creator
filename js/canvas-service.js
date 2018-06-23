@@ -12,6 +12,7 @@ let canvasService = (function() {
     selectedImgId: null,
     txts: []
   };
+
   function init(src, id) {
     let image = new Image();
     image.onload = onImageLoad(image, id);
@@ -62,10 +63,10 @@ let canvasService = (function() {
       y: y,
       line: '',
       size: 40,
-      family: 'Arial',
+      family: 'Impact',
       align: 'center',
       fill: '#ffffff',
-      stroke: false,
+      stroke: true,
       isDragging: false
     };
 
@@ -89,7 +90,8 @@ let canvasService = (function() {
     for (const txt of meme.txts) {
       // set text styles
       ctx.fillStyle = txt.fill;
-      ctx.font = `${txt.size}px/1 ${txt.font}`;
+      // ctx.font = `${txt.size}px/1 ${txt.font}`;
+      ctx.font = `normal 700 ${txt.size}px ${txt.family}`;
       ctx.textAlign = txt.align;
 
       ctx.fillText(txt.line, txt.x, txt.y);

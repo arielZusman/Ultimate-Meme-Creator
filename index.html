@@ -91,6 +91,13 @@
           <i class="control__btn fas fa-align-left" onclick="onTextPropChange({align: 'left'})"></i>
           <i class="control__btn fas fa-trash" onclick="onDeleteLine()"></i>
           <i class="control__btn fas fa-plus-circle" onclick="onAddNewLine()"></i>
+          <!-- <input class="control__font" list="fonts" onchange="onTextPropChange({family: this.value})" value="Impact"> -->
+          <select id="fonts" onchange="onTextPropChange({family: this.value})" value="Impact">
+            <option value="Impact">Impact</option>
+            <option value="Shrikhand">Shrikhand</option>
+            <option value="IM Fell English SC">IM Fell English SC</option>
+            <option value="Indie Flower">Indie Flower</option>
+          </select>
           <a class="control__btn control__download fas fa-download" onclick="onDownloadCanvas(this)"></a>
           <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
             <input name="img" id="imgToPublish" type="hidden" />
@@ -111,26 +118,7 @@
         <p class="about__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint temporibus beatae consequatur quae quasi! Cum harum
           praesentium, saepe ullam odit, mollitia optio nemo rerum ipsa aut, adipisci id rem possimus.</p>
       </div>
-      <!-- <ul class="about__share share list">
-        <li>
-          <i class="fas fa-facebook-f"></i>
-        </li>
-        <li>
-          <i class="fas fa-twitter"></i>
-        </li>
-        <li>
-          <i class="fas fa-google-plus-g"></i>
-        </li>
-        <li>
-          <i class="fas fa-pinterest-p"></i>
-        </li>
-        <li>
-          <i class="fas fa-linkedin-in"></i>
-        </li>
-        <li>
-          <i class="fas fa-dribble"></i>
-        </li>
-      </ul> -->
+
     </section>
     <footer id="contact" class="contact-container">
       <div class="contact__wrap">

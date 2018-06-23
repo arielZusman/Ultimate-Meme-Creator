@@ -10,6 +10,23 @@
   font-weight: 400;
   src: url('../fonts/Lato-Regular.ttf');
 }
+@font-face {
+  font-family: 'Impact';
+  src: url('../fonts/impact.ttf');
+}
+@font-face {
+  font-family: 'IM Fell English SC';
+  src: url('../fonts/IMFeENsc28P.ttf');
+}
+@font-face {
+  font-family: 'Shrikhand';
+  src: url('../fonts/Shrikhand-Regular.ttf');
+}
+@font-face {
+  font-family: 'Indie Flower';
+  src: url('../fonts/IndieFlower.ttf');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -201,7 +218,7 @@ main {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* editor */

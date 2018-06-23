@@ -76,6 +76,7 @@ function onKeywordClick(keyword, ev) {
 function onFilterChange(filter) {
   render(filter);
 }
+
 function onAnimationEnd(elImage) {
   elImage.remove();
 }
