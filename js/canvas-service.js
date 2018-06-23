@@ -81,19 +81,12 @@ let canvasService = (function() {
 
     drawTextBox(idx);
 
-    // ctx.stroke();
     // render lines
     for (const txt of meme.txts) {
       // set text styles
       ctx.fillStyle = txt.fill;
       ctx.font = `${txt.size}px/1 ${txt.font}`;
       ctx.textAlign = txt.align;
-
-      // let maxWidth = elCanvas.width - 30;
-      // TODO support for multiple lines;
-      // let textWidth = ctx.measureText(value).width;
-      // if (textWidth > maxWidth) {
-      // }
 
       ctx.fillText(txt.line, txt.x, txt.y);
 
@@ -151,14 +144,7 @@ let canvasService = (function() {
       document.querySelector('#gallery').classList.add('hidden');
 
       let elEditor = document.querySelector('#editor');
-      elCanvas.width = elEditor.offsetWidth;
 
-      const max_width = elCanvas.width;
-
-      // if (image.width > max_width) {
-      //   image.height = (image.height * max_width) / image.width;
-      //   image.width = max_width;
-      // }
       elCanvas.height = image.height;
       elCanvas.width = image.width;
 

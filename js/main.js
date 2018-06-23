@@ -96,7 +96,7 @@ function onCanvasClick(ev) {
 
 function onDownloadCanvas(elLink) {
   canvasService.download();
-  // let imgContent = canvasService.download();
-  // elLink.href = imgContent;
-  // elLink.download = 'meme.jpg';
+  let imgContent = canvasService.download();
+  elLink.href = imgContent;
+  elLink.download = 'meme.jpg';
 }
