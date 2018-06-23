@@ -30,6 +30,23 @@ let canvasService = (function() {
     return meme.txts.length - 1;
   }
 
+  /**
+   * get the click mouse position
+   * and return an object with index of text to edit
+   * and the text
+   */
+  function editLine(mouseX, mouseY) {
+    let idx = meme.txts.findIndex(txt => {
+      let boxPositionY = txt.y - txt.size + 5;
+      return (
+        mouseX > 10 &&
+        mouseX < elCanvas.width - 20 &&
+        mouseY > boxPositionY &&
+        mouseY < txt.y + 5
+      );
+    });
+    return idx > -1 ? { idx: idx, line: meme.txts[idx].line } : null;
+  }
   function createTextObj(x, y) {
     let txt = {
       x: x,
@@ -85,6 +102,7 @@ let canvasService = (function() {
       meme.txts[idx].size + 5
     );
   }
+
   function changeTextProp(idx, prop) {
     let txt = meme.txts[idx];
 
@@ -150,6 +168,7 @@ let canvasService = (function() {
     renderText: renderText,
     textSize: textSize,
     changeTextProp: changeTextProp,
-    addNewLine: addNewLine
+    addNewLine: addNewLine,
+    editLine: editLine
   };
 })();

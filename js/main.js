@@ -79,7 +79,15 @@ function onBackToGallery() {
   document.querySelector('#gallery').classList.remove('hidden');
 }
 
-function onAddNewLine(elBtn) {
+function onAddNewLine() {
   gCurrentLineIdx = canvasService.addNewLine();
   document.querySelector('.control__input').value = '';
+}
+
+function onCanvasClick(elCanvas, ev) {
+  let lineObj = canvasService.editLine(ev.layerX, ev.layerY);
+  if (lineObj) {
+    gCurrentLineIdx = lineObj.idx;
+    document.querySelector('.control__input').value = lineObj.line;
+  }
 }
