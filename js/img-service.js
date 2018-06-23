@@ -1,6 +1,8 @@
 'use strict';
 
 const imgService = (function() {
+  const KEYWORD_KEY = 'imagesKeywords';
+
   const images_ = [
     { id: 0, url: 'imgs/003.jpg', keywords: ['trump', 'funny'] },
     { id: 1, url: 'imgs/004.jpg', keywords: ['animal', 'cute', 'funny'] },
@@ -41,20 +43,33 @@ const imgService = (function() {
     { id: 24, url: 'imgs/X-Everywhere.jpg', keywords: ['movie'] }
   ];
 
-  let filter_ = '';
+  function init() {
+    setKeywords();
+  }
+
   function getImagesForDisplay() {
     return JSON.parse(JSON.stringify(images_));
   }
 
-  function getKeywords() {
-    let keywords = images_.reduce((acc, image) => {
-      let keywords = image.keywords.filter(keyword => {
-        return !acc.includes(keyword);
+  function setKeywords() {
+    let keywordsMap = images_.reduce((acc, image) => {
+      image.keywords.forEach(keyword => {
+        if (acc[keyword]) acc[keyword]++;
+        else acc[keyword] = 1;
       });
-      return acc.concat(keywords);
-    }, []);
+      return acc;
+    }, {});
+    saveToStorage(KEYWORD_KEY, keywordsMap);
+  }
 
-    return keywords;
+  function updateKeywordsMap(keyword) {
+    let keywordsMap = loadFromStorage(KEYWORD_KEY);
+    keywordsMap[keyword]++;
+    saveToStorage(KEYWORD_KEY, keywordsMap);
+  }
+
+  function getKeywords() {
+    return loadFromStorage(KEYWORD_KEY);
   }
 
   function getIdsByFilter(filter) {
@@ -77,6 +92,8 @@ const imgService = (function() {
     getImagesForDisplay: getImagesForDisplay,
     getKeywords: getKeywords,
     getIdsByFilter: getIdsByFilter,
-    getImageById: getImageById
+    getImageById: getImageById,
+    updateKeywordsMap: updateKeywordsMap,
+    init: init
   };
 })();

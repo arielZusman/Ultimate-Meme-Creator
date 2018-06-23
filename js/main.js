@@ -2,8 +2,10 @@
 let gCurrentLineIdx = 0;
 
 function init() {
+  imgService.init();
   renderSearch();
   render();
+  renderKeywords();
 }
 
 function render() {
@@ -24,17 +26,48 @@ function render() {
 }
 
 function renderSearch() {
-  let values = imgService.getKeywords();
-
-  let optionsStrs = values.map(value => {
-    return `<option value="${value}">${value}</option>`;
+  let keywords = imgService.getKeywords();
+  keywords = Object.keys(keywords);
+  let optionsStrs = keywords.map(keyword => {
+    return `<option value="${keyword}">${keyword}</option>`;
   });
 
   document.querySelector('#images').innerHTML = optionsStrs.join('');
 }
 
-function onFilterChange(elList) {
-  let filter = elList.value;
+function renderKeywords() {
+  let keywordsMap = imgService.getKeywords();
+  let baseFontSize = 1;
+
+  let keywords = Object.keys(keywordsMap);
+
+  let keywordsStrs = keywords.map(keyword => {
+    let fontSize = keywordsMap[keyword] * baseFontSize;
+    return `<li>
+              <a href="#" 
+                style="font-size: ${fontSize}em"
+                onclick="onKeywordClick('${keyword}', event)">
+                ${keyword}
+                </a>
+            </li>`;
+  });
+
+  document.querySelector('.keywords-container').innerHTML = keywordsStrs.join(
+    ''
+  );
+}
+
+function onKeywordClick(keyword, ev) {
+  ev.preventDefault();
+
+  imgService.updateKeywordsMap(keyword);
+  renderKeywords();
+
+  document.querySelector('.image-filter__input').value = keyword;
+  onFilterChange(keyword);
+}
+
+function onFilterChange(filter) {
   let ids = imgService.getIdsByFilter(filter);
 
   let elImages = document.querySelectorAll('.image');
