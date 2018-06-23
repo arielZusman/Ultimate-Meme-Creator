@@ -64,6 +64,9 @@ function onTextChange(value) {
   canvasService.renderText(value, 0);
 }
 
+function onTextPropChange(prop) {
+  canvasService.changeTextProp(0, prop);
+}
 function onIncreaseText() {
   canvasService.textSize(0, 5);
 }

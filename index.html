@@ -61,8 +61,13 @@
       <div class="control">
         <input class="control__input" type="text" onclick="onTextChange(this.value)" onkeyup="onTextChange(this.value)">
         <div class="btns-container">
-          <button class="control__btn" onclick="onIncreaseText()">+</button>
-          <button class="control__btn" onclick="onDecreaseText()">-</button>
+          <button class="control__btn" onclick="onTextPropChange({inc: 5})">+</button>
+          <button class="control__btn" onclick="onTextPropChange({inc: -5})">-</button>
+          <input class="control__fill" type="color" onchange="onTextPropChange({fill : this.value})">
+          <button class="control__btn" onclick="onTextPropChange('stroke')">S</button>
+          <button class="control__btn" onclick="onTextPropChange({align: 'right'})">R</button>
+          <button class="control__btn" onclick="onTextPropChange({align: 'center'})">C</button>
+          <button class="control__btn" onclick="onTextPropChange({align: 'left'})">L</button>
         </div>
 
       </div>
