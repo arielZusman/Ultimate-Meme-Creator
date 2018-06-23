@@ -71,6 +71,10 @@
           <button class="control__btn" onclick="onTextPropChange({align: 'center'})">C</button>
           <button class="control__btn" onclick="onTextPropChange({align: 'left'})">L</button>
           <button class="control__btn" onclick="onAddNewLine()">New Line</button>
+          <input class="control__font" list="fonts" onchange="onFontFamilyChange(this.value)">
+          <datalist id="fonts">
+            <!-- datalist fonts goes here  -->
+          </datalist>
         </div>
         <a class="control__download" onclick="onDownloadCanvas(this)">Download</a>
       </div>

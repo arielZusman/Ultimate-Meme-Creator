@@ -6,6 +6,7 @@ function init() {
   renderSearch();
   render();
   renderKeywords();
+  getFontList();
 }
 
 function render() {
@@ -57,6 +58,36 @@ function renderKeywords() {
   );
 }
 
+// get fonts from google
+function getFontList() {
+  let url =
+    'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyARVUmPpWziASm1rlO6d12srMZt8vV8u8o&sort=popularity';
+
+  fetch(url, {
+    method: 'GET'
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(renderFontList)
+    .catch(function(error) {
+      console.error(error);
+    });
+}
+
+function renderFontList(fonts) {
+  // to many fonts....
+  // let optionsStrs = fonts.items.map(font => {
+  //   return `<option value="${font.family}">${font.family}</option>`;
+  // });
+
+  let strHtml = '<option value="impact">Impact</option>';
+  for (let i = 0; i < 10; i++) {
+    let currFontFamily = fonts.items[i].family;
+    strHtml += `<option value="${currFontFamily}">${currFontFamily}</option>`;
+  }
+  document.querySelector('#fonts').innerHTML = strHtml;
+}
 function onKeywordClick(keyword, ev) {
   ev.preventDefault();
 

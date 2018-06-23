@@ -12,6 +12,9 @@ let canvasService = (function() {
     selectedImgId: null,
     txts: []
   };
+
+  let fontFamily = '';
+
   function init(src, id) {
     let image = new Image();
     image.onload = onImageLoad(image, id);
@@ -19,6 +22,14 @@ let canvasService = (function() {
     return 0;
   }
 
+  function loadFont() {
+    var f = new FontFace('impact', 'url("../fonts/impact.ttf")');
+
+    f.load().then(function(font) {
+      fontFamily = font.family;
+      addNewLine();
+    });
+  }
   function addNewLine() {
     let x = elCanvas.width / 2;
 
@@ -61,8 +72,8 @@ let canvasService = (function() {
       x: x,
       y: y,
       line: '',
-      size: 40,
-      family: 'Arial',
+      size: 100,
+      family: fontFamily,
       align: 'center',
       fill: '#ffffff',
       stroke: false
@@ -85,7 +96,8 @@ let canvasService = (function() {
     for (const txt of meme.txts) {
       // set text styles
       ctx.fillStyle = txt.fill;
-      ctx.font = `${txt.size}px/1 ${txt.font}`;
+      // ctx.font = `${txt.size}px/1 ${txt.font}`;
+      ctx.font = `normal 700 ${txt.size}px ${txt.family}`;
       ctx.textAlign = txt.align;
 
       ctx.fillText(txt.line, txt.x, txt.y);
@@ -152,7 +164,7 @@ let canvasService = (function() {
       ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
 
       yTextPositions = [50, elCanvas.height - 10, elCanvas.height / 2];
-      addNewLine();
+      loadFont();
     };
   }
 
