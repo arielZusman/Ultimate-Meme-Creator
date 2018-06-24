@@ -472,6 +472,13 @@ main {
   .info-container {
     width: 30%;
   }
+  .editor-container {
+    display: flex;
+    padding: 16px;
+  }
+  .control {
+    padding: 0 16px;
+  }
 }
 
 @supports (display: grid) {

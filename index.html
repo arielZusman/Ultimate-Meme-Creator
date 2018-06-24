@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="lib/fontawesome/css/all.css">
+  <link rel="stylesheet" href="lib/animate/animate.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <title>Ultimate Meme Creator</title>
@@ -69,12 +70,13 @@
       </ul>
     </section>
     <section id="editor" class="editor-container hidden">
-      <button class="back-to" onclick="onBackToGallery()">
-        back to gallery
-      </button>
-      <canvas id="meme" class="meme" onclick="onCanvasClick(event)" onmousedown="onDragStart(event)" onmousemove="onDragLine(event)"
-        ; onmouseup="onDragEnd(event)" onmouseout="onDragEnd(event)"></canvas>
-
+      <div class="canvas-wrap">
+        <button class="back-to" onclick="onBackToGallery()">
+          back to gallery
+        </button>
+        <canvas id="meme" class="meme" onclick="onCanvasClick(event)" onmousedown="onDragStart(event)" onmousemove="onDragLine(event)"
+          ; onmouseup="onDragEnd(event)" onmouseout="onDragEnd(event)"></canvas>
+      </div>
       <div class="control">
         <input class="control__input" type="text" onkeyup="onTextChange(this.value)">
         <div class="btns-container">
@@ -136,7 +138,7 @@
         <h3 class="contact__tagline">In order to get in touch use the contact form below:</h3>
 
         <div class="contact-form">
-          <form onsubmit="onContactFormSubmit()">
+          <form onsubmit="onContactFormSubmit(this, event)">
             <input class="contact-form__input" type="text" name="name" placeholder="Name(Required)" required>
             <input class="contact-form__input" type="email" name="email" placeholder="Email(Required)" required>
             <input class="contact-form__input" type="text" name="subject" placeholder="Subject">

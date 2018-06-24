@@ -8,19 +8,22 @@ function init() {
   renderKeywords();
 }
 
-function render() {
+function render(filter) {
   let images = imgService.getImagesForDisplay();
-  console.log(images);
 
   let imagesStrs = images.map(image => {
     let { id, url, keywords } = image;
-    return `<li class="image__item">
-              <div class="image__hexagon"
-                style="background-image:url('${url}')"
-                data-id="${id}" 
-                alt="${keywords.join(' ')}"
-                onclick="onImageClick(this)"
-                ></div>
+    let animate = '';
+    if (filter) {
+      animate = keywords.includes(filter) ? '' : 'animated fadeOut';
+    }
+    return `<li class="image__item ${animate}"
+               data-id="${id}"
+               onanimationend="onAnimationEnd(this)"
+               onclick="onImageClick(this)">
+                <div class="image__hexagon"
+                  style="background-image:url('${url}')"                
+                  alt="${keywords.join(' ')}"></div>
             </li>`;
   });
 
@@ -71,14 +74,10 @@ function onKeywordClick(keyword, ev) {
 }
 
 function onFilterChange(filter) {
-  let ids = imgService.getIdsByFilter(filter);
-
-  let elImages = document.querySelectorAll('.image');
-
-  elImages.forEach(elImage => {
-    if (ids.includes(+elImage.dataset.id)) elImage.classList.remove('hidden');
-    else elImage.classList.add('hidden');
-  });
+  render(filter);
+}
+function onAnimationEnd(elImage) {
+  elImage.remove();
 }
 
 function onToggleMobileMenu(elNavToggle) {
@@ -197,4 +196,21 @@ function onPublishSuccess(uploadedImgUrl) {
         <a class="w-inline-block social-share-btn fb" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
            Share   
         </a>`;
+}
+
+function onContactFormSubmit(elForm, ev) {
+  ev.preventDefault();
+  let mailTo = 'ariel.zusman@gmail.com';
+  let name = elForm.querySelector('[name="name"]').value;
+  let email = elForm.querySelector('[name="email"]').value;
+  let subject = elForm.querySelector('[name="subject"]').value;
+  let message = elForm.querySelector('[name="message"]').value;
+
+  let body = `from: ${name}
+              email: ${email}
+              
+              ${message}`;
+  let url = `https://mail.google.com/mail/?view=cm&fs=1&to=${mailTo}&su=${subject}&body=${body}&bcc=${email}`;
+
+  window.location.href = url;
 }

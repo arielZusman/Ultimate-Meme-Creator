@@ -4,7 +4,7 @@ const imgService = (function() {
   const KEYWORD_KEY = 'imagesKeywords';
   const IMAGES_KEY = 'memeImages';
 
-  const images_ = [
+  const imageSamples = [
     { id: 0, url: 'imgs/003.jpg', keywords: ['trump', 'funny'] },
     { id: 1, url: 'imgs/004.jpg', keywords: ['animal', 'cute', 'funny'] },
     { id: 2, url: 'imgs/005.jpg', keywords: ['cute', 'funny', 'happy'] },
@@ -47,14 +47,13 @@ const imgService = (function() {
   function init() {
     let images = loadFromStorage(IMAGES_KEY);
     if (!images || images.length === 0) {
-      saveToStorage(IMAGES_KEY, images_);
+      saveToStorage(IMAGES_KEY, imageSamples);
     }
     setKeywords();
   }
 
   function getImagesForDisplay() {
     return loadFromStorage(IMAGES_KEY);
-    // return JSON.parse(JSON.stringify(images_));
   }
 
   function onImageReady(imgUrl) {
@@ -72,7 +71,7 @@ const imgService = (function() {
   }
 
   function setKeywords() {
-    let keywordsMap = images_.reduce((acc, image) => {
+    let keywordsMap = imageSamples.reduce((acc, image) => {
       image.keywords.forEach(keyword => {
         if (acc[keyword]) acc[keyword]++;
         else acc[keyword] = 1;
@@ -94,7 +93,7 @@ const imgService = (function() {
 
   function getIdsByFilter(filter) {
     filter = filter.trim().toLowerCase();
-    return images_.reduce((acc, image) => {
+    return imageSamples.reduce((acc, image) => {
       if (!filter) acc.push(image.id);
       else if (image.keywords.includes(filter)) acc.push(image.id);
 
@@ -103,7 +102,7 @@ const imgService = (function() {
   }
 
   function getImageById(id) {
-    return images_.find(image => {
+    return imageSamples.find(image => {
       return image.id === id;
     });
   }
