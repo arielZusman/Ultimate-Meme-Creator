@@ -14,8 +14,8 @@ function render() {
 
   let imagesStrs = images.map(image => {
     let { id, url, keywords } = image;
-    return `<li>
-              <div class="image hexagon"
+    return `<li class="image__item">
+              <div class="image__hexagon"
                 style="background-image:url('${url}')"
                 data-id="${id}" 
                 alt="${keywords.join(' ')}"
