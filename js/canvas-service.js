@@ -7,8 +7,6 @@ let canvasService = (function() {
   const elCanvas = document.querySelector('#meme');
   const ctx = elCanvas.getContext('2d');
 
-  let yTextPositions = [];
-
   let imageObj = null;
   let meme = {
     selectedImgId: null,
@@ -24,9 +22,13 @@ let canvasService = (function() {
 
   function addNewLine() {
     let x = elCanvas.width / 2;
-
+    let y = 50;
     let idx = meme.txts.length;
-    let y = yTextPositions[idx];
+
+    if (meme.txts[idx - 1]) {
+      y = meme.txts[idx - 1].y + meme.txts[idx - 1].size;
+    }
+
     createTextObj(x, y);
     drawTextBox(meme.txts.length - 1);
     // the idx of the last text
@@ -175,7 +177,7 @@ let canvasService = (function() {
 
   function dragLine(movX, movY, idx) {
     let txt = meme.txts[idx];
-    if (txt.isDragging) {
+    if (txt && txt.isDragging) {
       txt.y += movY;
       txt.x += movX;
       redrawImage();
@@ -238,7 +240,6 @@ let canvasService = (function() {
 
       redrawImage();
 
-      yTextPositions = [50, elCanvas.height - 10, elCanvas.height / 2];
       addNewLine();
     };
   }
@@ -246,6 +247,14 @@ let canvasService = (function() {
   function redrawImage() {
     ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
     ctx.drawImage(imageObj, 0, 0, elCanvas.width, elCanvas.height);
+  }
+
+  function reset() {
+    meme = {
+      selectedImgId: null,
+      txts: []
+    };
+    imageObj = null;
   }
 
   return {
@@ -260,6 +269,7 @@ let canvasService = (function() {
     dragStart: dragStart,
     dragEnd: dragEnd,
     dragLine: dragLine,
-    getDataUrl: getDataUrl
+    getDataUrl: getDataUrl,
+    reset: reset
   };
 })();

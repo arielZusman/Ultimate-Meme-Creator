@@ -294,7 +294,9 @@ main {
 .file-container {
   display: flex;
 }
-
+.publish-form {
+  display: flex;
+}
 /* Buttons */
 .btn {
   display: inline-block;

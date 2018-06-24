@@ -119,6 +119,7 @@ function onDecreaseText() {
 }
 
 function onBackToGallery() {
+  canvasService.reset();
   document.querySelector('#editor').classList.add('hidden');
   document.querySelector('#gallery').classList.remove('hidden');
 }

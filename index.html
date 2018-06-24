@@ -91,7 +91,7 @@
           <i class="control__btn">
             <input class="control__fill" type="color" onchange="onTextPropChange({fill : this.value})">
           </i>
-          <i class="control__btn fas fa-font" onclick="onTextPropChange('stroke', this)"></i>
+          <i class="control__btn control__btn--active fas fa-font" onclick="onTextPropChange('stroke', this)"></i>
           <div class="control-align">
             <i class="control__btn fas fa-align-right" onclick="onTextPropChange({align: 'right'}, this)"></i>
             <i class="control__btn control__btn--active fas fa-align-center" onclick="onTextPropChange({align: 'center'}, this)"></i>
@@ -107,7 +107,7 @@
             <option value="Indie Flower">Indie Flower</option>
           </select>
           <a class="control__btn control__download fas fa-download" onclick="onDownloadCanvas(this)"></a>
-          <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
+          <form class="publish-form" action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
             <input name="img" id="imgToPublish" type="hidden" />
             <button type="submit" class="control__btn">
               <i class="fas fa-upload"></i>Publish</button>
