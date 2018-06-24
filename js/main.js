@@ -129,11 +129,11 @@ function onCanvasClick(ev) {
   }
 }
 
-function onDownloadCanvas(elLink) {
-  canvasService.download();
+function onDownloadCanvas(elLink, ev) {
   let imgContent = canvasService.download();
   elLink.href = imgContent;
-  elLink.download = 'meme.jpg';
+  let time = new Date().getTime();
+  elLink.download = `meme-${time}.jpg`;
 }
 
 function onDeleteLine() {

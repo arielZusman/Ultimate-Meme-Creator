@@ -55,7 +55,8 @@ let canvasService = (function() {
   }
 
   function download() {
-    console.dir(imageObj);
+    redrawImage();
+    renderTextLines();
     return elCanvas.toDataURL('image/jpeg');
   }
 

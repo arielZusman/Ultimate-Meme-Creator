@@ -14,6 +14,12 @@
 
 <body onload="init()" onkeydown="onLineMove(event)">
   <div id="fb-root"></div>
+  <div id="font-hack">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+  </div>
   <header class="header-container">
     <div class="header container">
       <a class="link" href="index.html">
@@ -91,7 +97,6 @@
           <i class="control__btn fas fa-align-left" onclick="onTextPropChange({align: 'left'})"></i>
           <i class="control__btn fas fa-trash" onclick="onDeleteLine()"></i>
           <i class="control__btn fas fa-plus-circle" onclick="onAddNewLine()"></i>
-          <!-- <input class="control__font" list="fonts" onchange="onTextPropChange({family: this.value})" value="Impact"> -->
           <select id="fonts" onchange="onTextPropChange({family: this.value})" value="Impact">
             <option value="Impact">Impact</option>
             <option value="Shrikhand">Shrikhand</option>
