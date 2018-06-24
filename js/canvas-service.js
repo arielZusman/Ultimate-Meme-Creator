@@ -51,7 +51,14 @@ let canvasService = (function() {
         actualY < txt.y + 5
       );
     });
-    return idx > -1 ? { idx: idx, line: meme.txts[idx].line } : null;
+    if (idx > -1) {
+      redrawImage();
+      renderTextLines();
+      drawTextBox(idx);
+      return { idx: idx, line: meme.txts[idx].line };
+    } else {
+      return null;
+    }
   }
 
   function download() {
@@ -173,6 +180,7 @@ let canvasService = (function() {
       txt.x += movX;
       redrawImage();
       renderTextLines();
+      drawTextBox(idx);
     }
   }
 
