@@ -170,6 +170,7 @@ let canvasService = (function() {
       renderTextLines();
     }
   }
+
   function changeTextProp(idx, prop) {
     let txt = meme.txts[idx];
 

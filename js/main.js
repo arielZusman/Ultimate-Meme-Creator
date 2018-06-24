@@ -169,3 +169,12 @@ function onDragEnd(ev) {
 function onDragLine(ev) {
   canvasService.dragLine(ev.movementX, ev.movementY, gCurrentLineIdx);
 }
+
+function onUploadImg(elForm, ev) {
+  ev.preventDefault();
+  uploadService.uploadImg(elForm, imgService.onImageReady);
+}
+
+function onFileInputChange(ev) {
+  uploadService.handleImageFromInput(ev.target.files[0]);
+}

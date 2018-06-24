@@ -2,6 +2,7 @@
 
 const imgService = (function() {
   const KEYWORD_KEY = 'imagesKeywords';
+  const IMAGES_KEY = 'memeImages';
 
   const images_ = [
     { id: 0, url: 'imgs/003.jpg', keywords: ['trump', 'funny'] },
@@ -44,11 +45,30 @@ const imgService = (function() {
   ];
 
   function init() {
+    let images = loadFromStorage(IMAGES_KEY);
+    if (!images || images.length === 0) {
+      saveToStorage(IMAGES_KEY, images_);
+    }
     setKeywords();
   }
 
   function getImagesForDisplay() {
-    return JSON.parse(JSON.stringify(images_));
+    return loadFromStorage(IMAGES_KEY);
+    // return JSON.parse(JSON.stringify(images_));
+  }
+
+  function onImageReady(imgUrl) {
+    let id = getParameterByName('id', imgUrl);
+    console.log(id);
+    let images = loadFromStorage(IMAGES_KEY);
+    let newImage = {
+      id: images.length,
+      url: `http://ca-upload.com/here/img/${id}.jpg`,
+      keywords: ['happy', 'funny']
+    };
+    images.push(newImage);
+    saveToStorage(IMAGES_KEY, images);
+    canvasService.init(newImage.url, newImage.id);
   }
 
   function setKeywords() {
@@ -94,6 +114,7 @@ const imgService = (function() {
     getIdsByFilter: getIdsByFilter,
     getImageById: getImageById,
     updateKeywordsMap: updateKeywordsMap,
+    onImageReady: onImageReady,
     init: init
   };
 })();
