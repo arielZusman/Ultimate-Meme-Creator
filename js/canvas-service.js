@@ -200,6 +200,19 @@ let canvasService = (function() {
       Object.assign(txt, prop);
     }
 
+    if (prop.align) {
+      switch (prop.align) {
+        case 'left':
+          txt.x = 30;
+          break;
+        case 'right':
+          txt.x = elCanvas.width - 30;
+          break;
+        case 'center':
+          txt.x = elCanvas.width / 2;
+          break;
+      }
+    }
     changeText(txt.line, idx);
   }
 

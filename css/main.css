@@ -271,7 +271,9 @@ main {
   justify-content: center;
   flex-wrap: wrap;
 }
-
+.control-align {
+  display: flex;
+}
 .control__btn {
   padding: 0.5em;
   background-color: #6b6b6b;
@@ -281,6 +283,10 @@ main {
   box-shadow: inset 0 0 1px #000;
   border: none;
   cursor: pointer;
+}
+.control__btn--active {
+  text-shadow: 1px 1px 1px #000;
+  color: #eee;
 }
 .control__btn:first-child {
   margin-left: 0;

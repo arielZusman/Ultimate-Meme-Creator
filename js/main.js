@@ -101,8 +101,15 @@ function onTextChange(value) {
   canvasService.renderText(value, gCurrentLineIdx);
 }
 
-function onTextPropChange(prop) {
+function onTextPropChange(prop, elBtn) {
   canvasService.changeTextProp(gCurrentLineIdx, prop);
+  if (elBtn) {
+    document.querySelectorAll('.control-align > .control__btn').forEach(el => {
+      el.classList.remove('control__btn--active');
+    });
+
+    elBtn.classList.toggle('control__btn--active');
+  }
 }
 function onIncreaseText() {
   canvasService.textSize(gCurrentLineIdx, 5);

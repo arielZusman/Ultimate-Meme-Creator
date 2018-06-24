@@ -91,10 +91,13 @@
           <i class="control__btn">
             <input class="control__fill" type="color" onchange="onTextPropChange({fill : this.value})">
           </i>
-          <i class="control__btn fas fa-font" onclick="onTextPropChange('stroke')"></i>
-          <i class="control__btn fas fa-align-right" onclick="onTextPropChange({align: 'right'})"></i>
-          <i class="control__btn fas fa-align-center" onclick="onTextPropChange({align: 'center'})"></i>
-          <i class="control__btn fas fa-align-left" onclick="onTextPropChange({align: 'left'})"></i>
+          <i class="control__btn fas fa-font" onclick="onTextPropChange('stroke', this)"></i>
+          <div class="control-align">
+            <i class="control__btn fas fa-align-right" onclick="onTextPropChange({align: 'right'}, this)"></i>
+            <i class="control__btn control__btn--active fas fa-align-center" onclick="onTextPropChange({align: 'center'}, this)"></i>
+            <i class="control__btn fas fa-align-left" onclick="onTextPropChange({align: 'left'}, this)"></i>
+          </div>
+
           <i class="control__btn fas fa-trash" onclick="onDeleteLine()"></i>
           <i class="control__btn fas fa-plus-circle" onclick="onAddNewLine()"></i>
           <select id="fonts" onchange="onTextPropChange({family: this.value})" value="Impact">
