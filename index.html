@@ -15,7 +15,7 @@
   <div id="fb-root"></div>
   <header class="header-container">
     <div class="header container">
-      <a href="index.html">
+      <a class="link" href="index.html">
         <h1 class="header__title">
           <span class="header__logo"></span>
           <span class="header__text">Ultimate Meme Creator</span>
@@ -42,24 +42,25 @@
     </div>
   </header>
   <main class="container">
-    <section id="gallery">
-      <div class="image-filter">
-        <input class="image-filter__input" list="images" placeholder="filter images" onchange="onFilterChange(this.value, event)">
-        <datalist id="images">
-          <!-- datalist options goes here  -->
-        </datalist>
+    <section id="gallery" class="gallery-container">
+      <div class="happy-container">
+        <div class="image-filter">
+          <input class="image-filter__input" list="images" placeholder="filter images" onchange="onFilterChange(this.value, event)">
+          <datalist id="images">
+            <!-- datalist options goes here  -->
+          </datalist>
 
 
+        </div>
+
+        <div class="upload-container">
+          <input class="upload__file" type="file" name="image" onchange="onFileInputChange(event)" />
+          <form class="upload__form" action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
+            <input name="img" id="imgData" type="hidden" />
+            <button class="btn btn--submit" type="submit">Upload</button>
+          </form>
+        </div>
       </div>
-
-      <div class="upload-container">
-        <input class="upload__file" type="file" name="image" onchange="onFileInputChange(event)" />
-        <form class="upload__form" action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
-          <input name="img" id="imgData" type="hidden" />
-          <button class="btn btn--submit" type="submit">Upload</button>
-        </form>
-      </div>
-
       <ul class="keywords-container list">
         <!-- keywords go here -->
       </ul>
@@ -101,11 +102,13 @@
     </section>
     <section id="about" class="about-container">
       <img class="about__image" src="imgs/image.png" alt="">
-      <h2 class="about__header">Ariel Zusman</h2>
-      <h3 class="about__tagline">Web Developer</h3>
+      <div class="about__info">
+        <h2 class="about__header">Ariel Zusman</h2>
+        <h3 class="about__tagline">Web Developer</h3>
 
-      <p class="about__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint temporibus beatae consequatur quae quasi! Cum harum
-        praesentium, saepe ullam odit, mollitia optio nemo rerum ipsa aut, adipisci id rem possimus.</p>
+        <p class="about__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint temporibus beatae consequatur quae quasi! Cum harum
+          praesentium, saepe ullam odit, mollitia optio nemo rerum ipsa aut, adipisci id rem possimus.</p>
+      </div>
       <!-- <ul class="about__share share list">
         <li>
           <i class="fas fa-facebook-f"></i>
@@ -128,37 +131,42 @@
       </ul> -->
     </section>
     <footer id="contact" class="contact-container">
-      <h2 class="contact__header">Get In Touch</h2>
-      <h3 class="contact__tagline">In order to get in touch use the contact form below:</h3>
-      <div class="contact-form">
-        <form onsubmit="onContactFormSubmit()">
-          <input class="contact-form__input" type="text" name="name" placeholder="Name(Required)" required>
-          <input class="contact-form__input" type="email" name="email" placeholder="Email(Required)" required>
-          <input class="contact-form__input" type="text" name="subject" placeholder="Subject">
-          <textarea class="contact-form__input" name="message" cols="30" rows="10" placeholder="Write your message here..."></textarea>
-          <div class="text-right">
-            <button class="contact-form__submit" type="submit">Send</button>
-          </div>
-        </form>
-      </div>
-      <div class="info-container">
-        <p class="info__text">
-          <span>Quisque Hendrerit:</span> purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin sit
-          amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae.</p>
-        <ul class="info__data list">
-          <li class="info__item">
-            <i class="fas fa-2x fa-map-marker-alt"></i>Elm St. 14/05 Lost City</li>
-          <li class="info__item">
-            <i class="fas fa-2x fa-phone"></i>
-            <a href="tel:+35283318635">+ 3528 331 86 35</a>
-          </li>
-          <li class="info__item">
-            <i class="fas fa-2x fa-envelope"></i>
-            <a href="mailto:info@hexalcorp.com">info@hexalcorp.com</a>
-          </li>
+      <div class="contact__wrap">
+        <h2 class="contact__header">Get In Touch</h2>
+        <h3 class="contact__tagline">In order to get in touch use the contact form below:</h3>
 
-        </ul>
+        <div class="contact-form">
+          <form onsubmit="onContactFormSubmit()">
+            <input class="contact-form__input" type="text" name="name" placeholder="Name(Required)" required>
+            <input class="contact-form__input" type="email" name="email" placeholder="Email(Required)" required>
+            <input class="contact-form__input" type="text" name="subject" placeholder="Subject">
+            <textarea class="contact-form__input" name="message" cols="30" rows="10" placeholder="Write your message here..."></textarea>
+            <div class="text-right">
+              <button class="contact-form__submit" type="submit">Send</button>
+            </div>
+          </form>
+
+          <div class="info-container">
+            <p class="info__text">
+              <span>Quisque Hendrerit:</span> purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus. Proin
+              sit amet volutpat libero. Nulla sed nunc et tortor luctus faucibus morbi vitae.</p>
+            <ul class="info__data list">
+              <li class="info__item">
+                <i class="fas fa-2x fa-map-marker-alt"></i>Elm St. 14/05 Lost City</li>
+              <li class="info__item">
+                <i class="fas fa-2x fa-phone"></i>
+                <a href="tel:+35283318635">+ 3528 331 86 35</a>
+              </li>
+              <li class="info__item">
+                <i class="fas fa-2x fa-envelope"></i>
+                <a href="mailto:info@hexalcorp.com">info@hexalcorp.com</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
       </div>
+
     </footer>
     <div class="footer-bottom">
       © Copyright 2013 by PSDchat
