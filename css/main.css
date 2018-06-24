@@ -33,6 +33,9 @@ body {
 
   list-style: none;
 }
+.text-right {
+  text-align: right;
+}
 .clear:after {
   content: '';
   display: block;
@@ -339,4 +342,86 @@ main {
   font-family: Lato;
   font-size: 12px;
   font-weight: 400;
+}
+
+.contact-container {
+  background-color: #323232;
+  padding: 16px;
+}
+.contact__header {
+  color: #e0e0e0;
+  font-family: 'Maven Pro';
+  font-size: 30px;
+}
+.contact__tagline {
+  color: #bebebe;
+  font-family: 'Maven Pro Regular';
+  font-size: 18px;
+}
+.contact-form {
+}
+.contact-form__input {
+  height: 38px;
+  background-color: #454545;
+  border: none;
+  margin-bottom: 16px;
+  color: #bebebe;
+  font-family: Lato;
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+}
+.contact-form__submit {
+  background-color: #2eb398;
+  color: #d7fcf5;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  padding: 16px 24px;
+}
+
+.info-container {
+}
+.info__text {
+  color: #bebebe;
+  font-family: Lato;
+  font-size: 12px;
+}
+.info__text span {
+  color: #e0e0e0;
+  font-weight: 900;
+}
+.info__data {
+  color: #bebebe;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 700;
+}
+.info__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.info__data .fas {
+  margin-right: 5px;
+}
+.info__data a {
+  text-decoration: none;
+  color: #bebebe;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 700;
+}
+.footer-bottom {
+  height: 43px;
+  background-color: #222222;
+  color: #454545;
+  font-family: 'Maven Pro';
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
 }
