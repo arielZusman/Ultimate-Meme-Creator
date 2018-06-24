@@ -60,6 +60,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 8px 16px;
 }
 
 .header__logo {
@@ -303,7 +304,13 @@ main {
   background-color: #2eb398;
 }
 
-.file-upload {
+.upload-container {
+  padding: 8px;
+  text-align: center;
+}
+.upload__file {
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
 .keywords-container {

@@ -53,8 +53,8 @@
       </div>
 
       <div class="upload-container">
-        <input class="file-upload" type="file" name="image" onchange="onFileInputChange(event)" />
-        <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
+        <input class="upload__file" type="file" name="image" onchange="onFileInputChange(event)" />
+        <form class="upload__form" action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
           <input name="img" id="imgData" type="hidden" />
           <button class="btn btn--submit" type="submit">Upload</button>
         </form>
