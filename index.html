@@ -11,6 +11,7 @@
 </head>
 
 <body onload="init()" onkeydown="onLineMove(event)">
+  <div id="fb-root"></div>
   <header class="header-container">
     <div class="header container">
       <a href="index.html">
@@ -47,6 +48,7 @@
           <!-- datalist options goes here  -->
         </datalist>
       </div>
+
       <div class="upload-container">
         <input type="file" name="image" onchange="onFileInputChange(event)" />
         <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
@@ -54,6 +56,7 @@
           <button type="submit">Upload</button>
         </form>
       </div>
+
       <ul class="keywords-container">
         <!-- keywords go here -->
       </ul>
@@ -82,6 +85,12 @@
           <button class="control__btn" onclick="onAddNewLine()">New Line</button>
         </div>
         <a class="control__download" onclick="onDownloadCanvas(this)">Download</a>
+        <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
+          <input name="img" id="imgToPublish" type="hidden" />
+          <button type="submit">Publish</button>
+        </form>
+        <div class="share-container"></div>
+
       </div>
 
     </section>

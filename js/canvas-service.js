@@ -190,6 +190,14 @@ let canvasService = (function() {
     changeText(txt.line, idx);
   }
 
+  function getDataUrl() {
+    // prepare canvas for upload
+    redrawImage();
+    renderTextLines();
+
+    return elCanvas.toDataURL('image/jpeg');
+  }
+
   function onImageLoad(image, id) {
     return function() {
       imageObj = image;
@@ -225,6 +233,7 @@ let canvasService = (function() {
     moveLine: moveLine,
     dragStart: dragStart,
     dragEnd: dragEnd,
-    dragLine: dragLine
+    dragLine: dragLine,
+    getDataUrl: getDataUrl
   };
 })();
