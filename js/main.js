@@ -107,6 +107,7 @@ function onIncreaseText() {
 function onDecreaseText() {
   canvasService.textSize(gCurrentLineIdx, -5);
 }
+
 function onBackToGallery() {
   document.querySelector('#editor').classList.add('hidden');
   document.querySelector('#gallery').classList.remove('hidden');
@@ -118,8 +119,6 @@ function onAddNewLine() {
 }
 
 function onCanvasClick(ev) {
-  console.log(ev.layerX, ev.layerY);
-
   let lineObj = canvasService.editLine(ev.layerX, ev.layerY);
   if (lineObj) {
     gCurrentLineIdx = lineObj.idx;
@@ -132,4 +131,12 @@ function onDownloadCanvas(elLink) {
   let imgContent = canvasService.download();
   elLink.href = imgContent;
   elLink.download = 'meme.jpg';
+}
+
+function onDeleteLine() {
+  canvasService.deleteLine(gCurrentLineIdx);
+  if (gCurrentLineIdx > 0) {
+    gCurrentLineIdx--;
+  }
+  document.querySelector('.control__input').value = '';
 }

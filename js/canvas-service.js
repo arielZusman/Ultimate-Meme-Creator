@@ -71,17 +71,20 @@ let canvasService = (function() {
     meme.txts.push(txt);
   }
 
-  function renderText(value, idx) {
+  function changeText(value, idx) {
     // clear and redraw the image
-    clearCanvas();
-    ctx.drawImage(imageObj, 0, 0, elCanvas.width, elCanvas.height);
+    redrawImage();
+    // ctx.drawImage(imageObj, 0, 0, elCanvas.width, elCanvas.height);
 
     // set current line text
     meme.txts[idx].line = value;
 
     drawTextBox(idx);
 
-    // render lines
+    renderTextLines();
+  }
+
+  function renderTextLines() {
     for (const txt of meme.txts) {
       // set text styles
       ctx.fillStyle = txt.fill;
@@ -105,6 +108,15 @@ let canvasService = (function() {
     );
   }
 
+  function deleteLine(idx) {
+    if (meme.txts.length > 1) {
+      meme.txts.splice(idx, 1);
+    } else {
+      meme.txts[idx].line = '';
+    }
+    redrawImage();
+    renderTextLines();
+  }
   function changeTextProp(idx, prop) {
     let txt = meme.txts[idx];
 
@@ -121,19 +133,7 @@ let canvasService = (function() {
       Object.assign(txt, prop);
     }
 
-    renderText(txt.line, idx);
-  }
-
-  function textSize(idx, inc) {
-    let txt = meme.txts[idx];
-
-    if (txt.size + inc < MIN_SIZE) {
-      txt.size = MIN_SIZE;
-    } else {
-      txt.size += inc;
-    }
-
-    renderText(txt.line, idx);
+    changeText(txt.line, idx);
   }
 
   function onImageLoad(image, id) {
@@ -148,24 +148,24 @@ let canvasService = (function() {
       elCanvas.height = image.height;
       elCanvas.width = image.width;
 
-      clearCanvas();
-      ctx.drawImage(image, 0, 0, elCanvas.width, elCanvas.height);
+      redrawImage();
 
       yTextPositions = [50, elCanvas.height - 10, elCanvas.height / 2];
       addNewLine();
     };
   }
 
-  function clearCanvas() {
+  function redrawImage() {
     ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
+    ctx.drawImage(imageObj, 0, 0, elCanvas.width, elCanvas.height);
   }
   return {
     init: init,
-    renderText: renderText,
-    textSize: textSize,
+    renderText: changeText,
     changeTextProp: changeTextProp,
     addNewLine: addNewLine,
     editLine: editLine,
-    download: download
+    download: download,
+    deleteLine: deleteLine
   };
 })();
