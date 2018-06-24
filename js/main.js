@@ -14,12 +14,14 @@ function render() {
 
   let imagesStrs = images.map(image => {
     let { id, url, keywords } = image;
-    return `<div class="image"
-             style="background-image:url('${url}')"
-             data-id="${id}" 
-             alt="${keywords.join(' ')}"
-             onclick="onImageClick(this)"
-             ></div>`;
+    return `<li>
+              <div class="image hexagon"
+                style="background-image:url('${url}')"
+                data-id="${id}" 
+                alt="${keywords.join(' ')}"
+                onclick="onImageClick(this)"
+                ></div>
+            </li>`;
   });
 
   document.querySelector('.image-container').innerHTML = imagesStrs.join('');
@@ -45,6 +47,7 @@ function renderKeywords() {
     let fontSize = keywordsMap[keyword] * baseFontSize;
     return `<li>
               <a href="#" 
+                class="keyword__link"
                 style="font-size: ${fontSize}em"
                 onclick="onKeywordClick('${keyword}', event)">
                 ${keyword}

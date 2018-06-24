@@ -47,22 +47,24 @@
         <datalist id="images">
           <!-- datalist options goes here  -->
         </datalist>
+
+
       </div>
 
       <div class="upload-container">
-        <input type="file" name="image" onchange="onFileInputChange(event)" />
+        <input class="file-upload" type="file" name="image" onchange="onFileInputChange(event)" />
         <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(this, event)">
           <input name="img" id="imgData" type="hidden" />
-          <button type="submit">Upload</button>
+          <button class="btn btn--submit" type="submit">Upload</button>
         </form>
       </div>
 
-      <ul class="keywords-container">
+      <ul class="keywords-container list">
         <!-- keywords go here -->
       </ul>
-      <div class="image-container">
+      <ul class="image-container list">
         <!-- images goes here -->
-      </div>
+      </ul>
     </section>
     <section id="editor">
       <button class="back-to" onclick="onBackToGallery()">
