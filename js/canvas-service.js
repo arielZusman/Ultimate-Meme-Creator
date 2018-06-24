@@ -1,7 +1,9 @@
 'use strict';
 
 let canvasService = (function() {
-  const MIN_SIZE = 15;
+  const MIN_FONT_SIZE = 15;
+  const BASE_FONT_SIZE = 40;
+
   const elCanvas = document.querySelector('#meme');
   const ctx = elCanvas.getContext('2d');
 
@@ -62,7 +64,7 @@ let canvasService = (function() {
       x: x,
       y: y,
       line: '',
-      size: 40,
+      size: BASE_FONT_SIZE,
       family: 'Impact',
       align: 'center',
       fill: '#ffffff',
@@ -180,8 +182,8 @@ let canvasService = (function() {
       txt.stroke = !txt.stroke;
     } else if (prop.inc) {
       let inc = prop.inc;
-      if (txt.size + inc < MIN_SIZE) {
-        txt.size = MIN_SIZE;
+      if (txt.size + inc < MIN_FONT_SIZE) {
+        txt.size = MIN_FONT_SIZE;
       } else {
         txt.size += inc;
       }
