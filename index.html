@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="lib/fontawesome/css/all.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <title>Ultimate Meme Creator</title>
@@ -66,7 +67,7 @@
         <!-- images goes here -->
       </ul>
     </section>
-    <section id="editor">
+    <section id="editor" class="editor-container hidden">
       <button class="back-to" onclick="onBackToGallery()">
         back to gallery
       </button>
@@ -76,31 +77,67 @@
       <div class="control">
         <input class="control__input" type="text" onkeyup="onTextChange(this.value)">
         <div class="btns-container">
-          <button class="control__btn" onclick="onTextPropChange({inc: 5})">+</button>
-          <button class="control__btn" onclick="onTextPropChange({inc: -5})">-</button>
-          <input class="control__fill" type="color" onchange="onTextPropChange({fill : this.value})">
-          <button class="control__btn" onclick="onTextPropChange('stroke')">S</button>
-          <button class="control__btn" onclick="onTextPropChange({align: 'right'})">R</button>
-          <button class="control__btn" onclick="onTextPropChange({align: 'center'})">C</button>
-          <button class="control__btn" onclick="onTextPropChange({align: 'left'})">L</button>
-          <button class="control__btn" onclick="onDeleteLine()">D</button>
-          <button class="control__btn" onclick="onAddNewLine()">New Line</button>
+          <i class="control__btn fas fa-plus" onclick="onTextPropChange({inc: 5})"></i>
+          <i class="control__btn fas fa-minus" onclick="onTextPropChange({inc: -5})"></i>
+          <i class="control__btn">
+            <input class="control__fill" type="color" onchange="onTextPropChange({fill : this.value})">
+          </i>
+          <i class="control__btn fas fa-font" onclick="onTextPropChange('stroke')"></i>
+          <i class="control__btn fas fa-align-right" onclick="onTextPropChange({align: 'right'})"></i>
+          <i class="control__btn fas fa-align-center" onclick="onTextPropChange({align: 'center'})"></i>
+          <i class="control__btn fas fa-align-left" onclick="onTextPropChange({align: 'left'})"></i>
+          <i class="control__btn fas fa-trash" onclick="onDeleteLine()"></i>
+          <i class="control__btn fas fa-plus-circle" onclick="onAddNewLine()"></i>
+          <a class="control__btn control__download fas fa-download" onclick="onDownloadCanvas(this)"></a>
+          <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
+            <input name="img" id="imgToPublish" type="hidden" />
+            <button type="submit" class="control__btn">
+              <i class="fas fa-upload"></i>Publish</button>
+          </form>
+          <div class="share-container"></div>
         </div>
-        <a class="control__download" onclick="onDownloadCanvas(this)">Download</a>
-        <form action="" method="POST" enctype="multipart/form-data" onsubmit="onPublishImg(this, event)">
-          <input name="img" id="imgToPublish" type="hidden" />
-          <button type="submit">Publish</button>
-        </form>
-        <div class="share-container"></div>
-
       </div>
 
     </section>
-    <section id="about">
-      <h2>About</h2>
+    <section id="about" class="about-container">
+      <img class="about__image" src="imgs/image.png" alt="">
+      <h2 class="about__header">Ariel Zusman</h2>
+      <h3 class="about__tagline">Web Developer</h3>
+
+      <p class="about__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint temporibus beatae consequatur quae quasi! Cum harum
+        praesentium, saepe ullam odit, mollitia optio nemo rerum ipsa aut, adipisci id rem possimus.</p>
+      <!-- <ul class="about__share share list">
+        <li>
+          <i class="fas fa-facebook-f"></i>
+        </li>
+        <li>
+          <i class="fas fa-twitter"></i>
+        </li>
+        <li>
+          <i class="fas fa-google-plus-g"></i>
+        </li>
+        <li>
+          <i class="fas fa-pinterest-p"></i>
+        </li>
+        <li>
+          <i class="fas fa-linkedin-in"></i>
+        </li>
+        <li>
+          <i class="fas fa-dribble"></i>
+        </li>
+      </ul> -->
     </section>
-    <section id="contact">
-      <h2>Contact Us</h2>
+    <section id="contact" class="contact-container">
+      <h2 class="contact__header">Get In Touch</h2>
+      <h3 class="contact__tagline">In order to get in touch use the contact form below:</h3>
+      <div class="contact-form">
+        <form onsubmit="onContactFormSubmit()">
+          <input class="contact-form__input" type="text" name="name" placeholder="Name(Required)" required>
+          <input class="contact-form__input" type="email" name="email" placeholder="Email(Required)" required>
+          <input class="contact-form__input" type="text" name="subject" placeholder="Subject">
+          <textarea class="contact-form__input" name="message" cols="30" rows="10" placeholder="Write your message here..."></textarea>
+        </form>
+      </div>
     </section>
   </main>
   <script src="js/utils-service.js"></script>

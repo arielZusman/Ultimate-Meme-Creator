@@ -205,7 +205,7 @@ let canvasService = (function() {
 
       document.querySelector('#gallery').classList.add('hidden');
 
-      let elEditor = document.querySelector('#editor');
+      document.querySelector('#editor').classList.remove('hidden');
 
       elCanvas.height = image.height;
       elCanvas.width = image.width;
