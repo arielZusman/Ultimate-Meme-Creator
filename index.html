@@ -10,7 +10,7 @@
   <title>Ultimate Meme Creator</title>
 </head>
 
-<body onload="init()">
+<body onload="init()" onkeydown="onLineMove(event)">
   <header class="header-container">
     <div class="header container">
       <a href="index.html">
@@ -58,7 +58,8 @@
       <button class="back-to" onclick="onBackToGallery()">
         back to gallery
       </button>
-      <canvas id="meme" class="meme" onclick="onCanvasClick(event)"></canvas>
+      <canvas id="meme" class="meme" onclick="onCanvasClick(event)" onmousedown="onDragStart(event)" onmousemove="onDragLine(event)"
+        ; onmouseup="onDragEnd(event)" onmouseout="onDragEnd(event)"></canvas>
 
       <div class="control">
         <input class="control__input" type="text" onkeyup="onTextChange(this.value)">

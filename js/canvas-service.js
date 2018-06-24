@@ -65,7 +65,8 @@ let canvasService = (function() {
       family: 'Arial',
       align: 'center',
       fill: '#ffffff',
-      stroke: false
+      stroke: false,
+      isDragging: false
     };
 
     meme.txts.push(txt);
@@ -117,6 +118,58 @@ let canvasService = (function() {
     redrawImage();
     renderTextLines();
   }
+
+  function moveLine(idx, direction) {
+    let txt = meme.txts[idx];
+
+    switch (direction) {
+      case 'up':
+        txt.y -= 5;
+        break;
+      case 'down':
+        txt.y += 5;
+        break;
+      case 'left':
+        txt.x -= 5;
+        break;
+      case 'right':
+        txt.x += 5;
+        break;
+    }
+
+    redrawImage();
+    renderTextLines();
+  }
+
+  function dragStart(mouseX, mouseY) {
+    let actualX = (elCanvas.width * mouseX) / elCanvas.clientWidth;
+    let actualY = (elCanvas.height * mouseY) / elCanvas.clientHeight;
+
+    let idx = meme.txts.findIndex(txt => {
+      let boxPositionY = txt.y - txt.size + 5;
+      return (
+        actualX > 10 &&
+        actualX < elCanvas.width - 20 &&
+        actualY > boxPositionY &&
+        actualY < txt.y + 5
+      );
+    });
+    if (idx > -1) meme.txts[idx].isDragging = true;
+  }
+
+  function dragEnd(idx) {
+    meme.txts[idx].isDragging = false;
+  }
+
+  function dragLine(movX, movY, idx) {
+    let txt = meme.txts[idx];
+    if (txt.isDragging) {
+      txt.y += movY;
+      txt.x += movX;
+      redrawImage();
+      renderTextLines();
+    }
+  }
   function changeTextProp(idx, prop) {
     let txt = meme.txts[idx];
 
@@ -159,6 +212,7 @@ let canvasService = (function() {
     ctx.clearRect(0, 0, elCanvas.width, elCanvas.height);
     ctx.drawImage(imageObj, 0, 0, elCanvas.width, elCanvas.height);
   }
+
   return {
     init: init,
     renderText: changeText,
@@ -166,6 +220,10 @@ let canvasService = (function() {
     addNewLine: addNewLine,
     editLine: editLine,
     download: download,
-    deleteLine: deleteLine
+    deleteLine: deleteLine,
+    moveLine: moveLine,
+    dragStart: dragStart,
+    dragEnd: dragEnd,
+    dragLine: dragLine
   };
 })();

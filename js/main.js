@@ -140,3 +140,32 @@ function onDeleteLine() {
   }
   document.querySelector('.control__input').value = '';
 }
+
+function onLineMove(eventKeyboard) {
+  switch (eventKeyboard.code) {
+    case 'ArrowUp':
+      canvasService.moveLine(gCurrentLineIdx, 'up');
+      break;
+    case 'ArrowDown':
+      canvasService.moveLine(gCurrentLineIdx, 'down');
+      break;
+    case 'ArrowLeft':
+      canvasService.moveLine(gCurrentLineIdx, 'left');
+      break;
+    case 'ArrowRight':
+      canvasService.moveLine(gCurrentLineIdx, 'right');
+      break;
+  }
+}
+
+function onDragStart(ev) {
+  canvasService.dragStart(ev.layerX, ev.layerY);
+}
+
+function onDragEnd(ev) {
+  canvasService.dragEnd(gCurrentLineIdx);
+}
+
+function onDragLine(ev) {
+  canvasService.dragLine(ev.movementX, ev.movementY, gCurrentLineIdx);
+}
